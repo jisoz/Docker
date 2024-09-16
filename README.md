@@ -8,12 +8,27 @@ Docker allows developers to package applications along with their dependencies i
 docker version
 docker info 
 
+# Key Components of Docker Architecture
+1. Docker Daemon (dockerd):
 
-# containers
+The daemon is the core of Docker, responsible for managing containers, images, volumes, and networks. It listens for Docker API requests and processes them.
+The daemon runs as a background process on the host machine.
 
-containers are required for efficient and conssistant application deploymnet and management ensuring portability and scalability accross different environements 
-# image : 
-lightweight standalone package that includes everthing needed to run a  software  => code , runtime  , system tools and libraries
+2. Docker Client (CLI):
+
+The Docker client (docker) is a command-line tool that interacts with the daemon using REST APIs. Commands like docker run, docker build, and docker pull are sent to the Docker daemon.
+
+3. Images:
+
+Docker images are immutable templates used to create containers. Images are made up of multiple layers. These layers can be shared across containers, making them lightweight.
+The Union File System (UFS) is used to manage these image layers efficiently.
+4. Containers:
+
+Containers are runtime instances of Docker images. A container consists of an image, environment variables, configurations, and networking. Docker containers are isolated using Linux technologies like namespaces and cgroups.
+
+5. Docker Registry:
+
+A central location where Docker images are stored and distributed. Docker Hub is the default registry, but private registries can also be configured. Docker images are pulled from the registry using commands like docker pull.
 
 
 containers is a running instance of an image 
