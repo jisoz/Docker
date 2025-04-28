@@ -255,3 +255,52 @@ services:
     ports:
       - "8080:80"
 
+
+
+
+
+# Docker Swarm 
+
+![image](https://github.com/user-attachments/assets/215b241f-7857-4c94-ba3d-21f54f1a044f)
+
+Services: defines the tasks that needs to be executed on the manger and worker nodes 
+Task refer to the docker containers that execute the commands defined in the service (task is a running instance of a container that can be executed on one of the worker nodes in the swarm.)
+manager node : 1. accepting commands and creating service objects 
+               2. allocating ip addresses to tasks 
+               3. assigning tasks to nodes 
+               4. isntructing a worker to run a task 
+
+
+1. Manager Nodes
+Role: Manager nodes are responsible for the overall management of the swarm, including orchestration and the scheduling of tasks across the worker nodes.
+
+Functions:
+
+Cluster Management: They store and manage the state of the swarm, including the configuration of services and tasks.
+
+Service Scheduling: They determine where and when tasks (containers) should run in the swarm.
+
+Maintain Desired State: Manager nodes ensure the swarm maintains its desired state, such as ensuring the right number of replicas of a service is running.
+
+Swarm Control: Manager nodes also coordinate cluster operations like scaling, updating, and managing services. They accept commands via the Docker CLI or API and propagate these to other nodes.
+
+High Availability: A swarm cluster typically has multiple manager nodes to ensure high availability. Only one manager node makes the actual decisions, but all manager nodes replicate the swarm’s state via Raft consensus.
+
+Raft Consensus: A distributed consensus algorithm that ensures that all manager nodes are in sync with each other. It guarantees that there’s a single source of truth for the state of the swarm.
+
+
+2.Worker Nodes
+Role: Worker nodes are the machines where the actual application containers are run. They receive and execute the tasks (containers) scheduled by manager nodes.
+
+Functions:
+
+Task Execution: Worker nodes execute the containers that are part of the services scheduled by the managers. They communicate with the manager nodes to get the assignments and to report status.
+
+Report State: Worker nodes report their status (task completion, resource usage, etc.) back to the manager nodes.
+
+Scalability: Swarm can scale the worker nodes horizontally (adding more machines to the swarm) to handle increased load.
+
+
+![image](https://github.com/user-attachments/assets/2f8db9b9-9f44-4047-80c6-da9fc9846161)
+
+
